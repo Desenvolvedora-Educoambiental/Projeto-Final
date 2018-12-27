@@ -2,17 +2,27 @@ package loja
 
 class LoginController {
 
-
-    def index() {
-
-    }
     def login() {
-        def usuario = Usuario.findByLoginAndSenha(params.nome, params.senha)
-    if (usuario){
-        session.user = usuario
-        println(usuario)
+        def user = Usuario.findByLoginAndSenha(params.login, params.senha)
+    if (user){
+        session.user = user
+        redirect(controller: 'compra', action: 'index')
+
     }else{
-        redirect(action: "login")
+        flash.message = g.message(code: 'login.error.message')
+        flash.error = true
+
+        render view: '/index', model: [active: 'index']
     }
+    }
+    def doLogout() {
+        if (session.user) {
+
+            session.user = null
+
+            session.invalidate()
+        }
+
+        redirect(controller: 'compra', action: 'index')
     }
 }

@@ -2,14 +2,16 @@
 <html>
 <head>
     <meta name="layout" content="main"/>
-    <title>Welcome to Grails</title>
+    <title>Estrela do Mar</title>
 </head>
 <body>
+<section id="index">
+
     <content tag="nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application Status <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Login<span class="caret"></span></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Environment: ${grails.util.Environment.current.name}</a></li>
+                <li><g:link controller="compra" action="login">Entrar</g:link> </li>
                 <li><a href="#">App profile: ${grailsApplication.config.grails?.profile}</a></li>
                 <li><a href="#">App version:
                     <g:meta name="info.app.version"/></a>
@@ -72,6 +74,6 @@
             </div>
         </section>
     </div>
-
+</section>
 </body>
 </html>

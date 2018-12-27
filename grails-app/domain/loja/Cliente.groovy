@@ -1,6 +1,6 @@
 package loja
 
-class Cliente  extends  Usuario{
+class Cliente extends  Usuario{
     String cpf
     String endereco
     String email
@@ -21,5 +21,5 @@ class Cliente  extends  Usuario{
     }
 
 
-    }
+}
 
