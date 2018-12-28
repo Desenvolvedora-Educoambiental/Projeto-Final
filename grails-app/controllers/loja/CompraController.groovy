@@ -11,4 +11,8 @@ class CompraController {
         render view: '/index', model: [active: 'index']
 
     }
+    def comprar() {
+        render view: '/compra', model: [active: 'comprar']
+
+    }
 }

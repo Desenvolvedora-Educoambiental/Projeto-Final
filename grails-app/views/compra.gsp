@@ -118,9 +118,6 @@
     background-color: #f4511e;
     color: #fff;
   }
-  .fundo{
-  background-color: #ffffcc;
-  }
   .navbar {
     margin-bottom: 0;
     background-color: #ffffcc;
@@ -205,30 +202,87 @@
   }
   </style>
 </head>
-<body class="fundo">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-<section id="login">
-
-
-    <div class="container-fluid  ">
-        <h2 class="text-center">Login</h2>
-        <div class="row">
-            <div class="col-sm-5">
-                <asset:image src="logo.png" width="200" height="200"/>
-            </div>
-            <g:textField  name="login" placeholder="login" required="" action="login" controller="login" /> <br/>
-
-                        <g:passwordField  name="senha" placeholder="senha" required="" action="login" controller="login" /><br/>
-
-                    <g:checkBox  name="remember"/>
-                    <label for="remember">Lembre-me</label><br/>
-
-                        <g:link controller="compra" action="index"> <button   type="submit">Entrar</button></g:link>
-                    </div>
+<section id="comprar">
+         <div  class="container-fluid  ">
+            <h2 class="text-center">COMPRA</h2>
+            <div class="row">
+                <div class="col-sm-5">
+                    <asset:image src="logo.png" width="120" height="100" />
                 </div>
+                <div class="col-sm-7 slideanim">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="name" name="name" placeholder="Nome" type="text" required>
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <input class="form-control" id="endereco" name="endereco" placeholder="Endereço" type="text" required>
+                        </div>
+                    </div>
+                    <label name="opc">Tamanho</label><br/>
+                    <g:radio  name="opc" value="P"/> <label value="P">P</label><br/>
+                    <g:radio  name="opc" value="M"/><label value="M">M</label><br/>
+                    <g:radio  name="opc" value="G"/><label value="G">G</label><br/>
+                    <g:radio  name="opc" value="XG"/><label value="XG">XG</label>
 
 
 
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <button class="btn btn-default pull-right" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                        <g:link controller="compra" action="index"> <button   type="submit">Voltar as compras</button></g:link>
+                </div>
+            </div>
+        </div>
+
+<footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </a>
+    <p>Estrela do Mar </p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
 </section>
 </body>
 </html>
+
